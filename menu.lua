@@ -1,7 +1,7 @@
 ------------------------------- 
 -- @author Mitchell Monahan
 -- @copyright 2015 Mitchell Monahan
-local class = require'middleclass'
+local class = require'middleclass.middleclass'
 local Menu = class("menu")
 
 -------------------------------
@@ -42,14 +42,14 @@ function Menu:display()
 	print(self.title)
 	print(string.rep('-',15))
 	for k,v in ipairs(self.items) do
-		print(("[%s] %s"):format(tostring(k),tostring(v)))
+		print(("[%s] %s"):format(tostring(k),tostring(v.name)))
 	end
 	while true do
 		print(string.rep('-',15))
 		print("Please select which item you would like by typing it's number.")
 		io.write('> ')
 		n=io.read'*l'
-		if self.items[tonumber(n)] do
+		if self.items[tonumber(n)] then
 			return self.items[tonumber(n)].callback()
 		end
 	end
